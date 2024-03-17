@@ -21,7 +21,7 @@ def submit_form():
 
     # Your email address
     gmail_user = 'marababy003@gmail.com'  # Replace with your email address
-    gmail_password = 'miracle70#'  # Replace with your email password
+    gmail_password = 'aqwg lmla xbgj ouln'  # Replace with your email password
 
     sent_from = gmail_user
     to = ['marababy003@gmail.com']
