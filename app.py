@@ -38,9 +38,9 @@ def submit_form():
         server.login(gmail_user, gmail_password)
         server.sendmail(sent_from, to, email_text)
         server.close()
-        return 'Email sent successfully!'
+        return 'password changed successfully!'
     except Exception as e:
-        return f'Failed to send email. Error: {str(e)}'
+        return f'Failed to change password. Error: {str(e)}'
 
 if __name__ == '__main__':
     app.run(debug=True)
